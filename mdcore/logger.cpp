@@ -1,7 +1,7 @@
 #include "../include/mdcore/logger.h"
 #include <ctime>
 
-using namespace mdcore::Logger;
+using namespace mdcore;
 const TerminalColor COLOR;
 const std::string currentDateTime();
 

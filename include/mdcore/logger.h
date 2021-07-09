@@ -5,7 +5,6 @@
 #include <fstream>
 
 namespace mdcore{
-    namespace Logger{
         enum LoggerLevel
         {
             FATAL = 5,
@@ -46,16 +45,16 @@ namespace mdcore{
                         file.open("config/config.json");
                         if(!file.is_open())
                         {
-                            return mdcore::Logger::LoggerLevel::INFO;
+                            return mdcore::LoggerLevel::INFO;
                         }
                         nlohmann::json f_json = nlohmann::json::parse(file);
                         int token;
                         f_json.at("logger_level").get_to(token);
-                        return mdcore::Logger::LoggerLevel(token);
+                        return mdcore::LoggerLevel(token);
                     }
                     catch(...)
                     {
-                        return mdcore::Logger::LoggerLevel::INFO;
+                        return mdcore::LoggerLevel::INFO;
                     }
                 }
         };
@@ -80,5 +79,4 @@ namespace mdcore{
                 const char* BOLD_WHITE = "\033[1;37m";
                 const char* RESET = "\033[0m";
         };
-    }
 }

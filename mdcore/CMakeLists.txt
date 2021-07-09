@@ -1,7 +1,8 @@
 add_library(mdcore STATIC
-	config_handler.cpp
+	config_manager.cpp
 	json_utils.cpp
 	logger.cpp
+	logger_handler.cpp
 	utils.cpp
 )
 
