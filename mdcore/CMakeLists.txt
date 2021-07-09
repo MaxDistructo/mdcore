@@ -1,5 +1,5 @@
 add_library(mdcore STATIC
-	config_manager.cpp
+	config_handler.cpp
 	json_utils.cpp
 	logger.cpp
 	logger_handler.cpp

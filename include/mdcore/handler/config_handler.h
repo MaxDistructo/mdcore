@@ -5,20 +5,20 @@
 #include <vector>
 #include <fstream>
 #include "json.hpp"
-#include "file_manager.h"
+#include "manager/file_manager.h"
 
 namespace mdcore
 {
 
-class ConfigManager
+class ConfigHandler
 {
     public:
-        ConfigManager()
+        ConfigHandler()
         {
             backend = {};
             searchPath = {"config/"};
         };
-        ~ConfigManager()
+        ~ConfigHandler()
         {
             if(path != ""){
                 writeToFile();
@@ -39,11 +39,10 @@ class ConfigManager
         std::map<std::string, std::string> backend;
         std::vector<std::string> searchPath;
         std::string path = "";
-        bool load(std::ifstream& stream);
+        bool load(std::fstream& stream);
         bool load(nlohmann::json json);
         std::string getAbsoluteFilePath(std::string fileName);
-        InputFileManager i_manager;
-        OutputFileManager o_manager;
+        FileManager<std::fstream> io_manager;
 };
 
 }

@@ -73,7 +73,7 @@ namespace mdcore
                 }
                 return false;
             };
-        private:
+        protected:
             std::map<std::string, T*> backend;
     };
     class InputFileManager : public FileManager<std::ifstream>
@@ -87,5 +87,24 @@ namespace mdcore
         public:
             OutputFileManager(){};
             ~OutputFileManager(){};
+    };
+    class InputOutputFileManager : public FileManager<std::fstream>
+    {
+        //Overrides superclass's open method as we need to now open with rw perms
+        //instead of just input or output perms
+        bool open(std::string fileName)
+        {
+            std::fstream* s = new std::fstream;
+            if(!get(s, fileName)){
+                s->open(fileName, std::ios::in | std::ios::out);
+                if(s->is_open())
+                {
+                    backend[fileName] = s;
+                    return true;
+                }
+                return false;
+            }
+            return true;
+        };
     };
 }
