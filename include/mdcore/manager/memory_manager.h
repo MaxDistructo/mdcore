@@ -20,22 +20,15 @@ namespace mdcore{
                 }
                 backend.clear();
             };
-            bool get(T*& t, std::string name)
+            T* get(std::string name)
             {
                 BackendIterator<T> it = backend.find(name);
                 if(it != backend.end())
                 {
-                    t = it->second;
-                    if(t == nullptr)
-                    {
-                        //In backend but it does not exist anymore
-                        return false;
-                    }
-                    //Valid entry, return it
-                    return true;
+                    return it->second;
                 }
                 //Not in backend
-                return false;
+                return nullptr;
             };
             bool create(std::string name)
             {
@@ -47,28 +40,28 @@ namespace mdcore{
                 }
                 return false;
             };
-            bool getOrCreate(T*& t, std::string name)
+            T* getOrCreate(std::string name)
             {
-                if(get(t, name))
+                T* test = get(name);
+                if(test != nullptr)
                 {
-                    return true;
+                    return test;
                 }
                 bool result = create(name);
                 if(!result)
                 {
-                    return false;
+                    return nullptr;
                 }
-                get(t, name);
-                return true;
+                return get(name);
             };
             void remove(std::string name)
             {
-                T* t;
-                if(get(t, name))
+                T* t = get(name);
+                if(t != nullptr)
                 {
                     delete t;
                     backend[name] = nullptr;
-                } 
+                }
             };
         private:
             std::map<std::string, T*> backend;
@@ -86,24 +79,17 @@ namespace mdcore{
                 }
                 backend.clear();
             };
-            bool get(T*& t, std::string name)
+            T* get(std::string name)
             {
                 BackendIterator<T> it = backend.find(name);
                 if(it != backend.end())
                 {
-                    t = it->second;
-                    if(t == nullptr)
-                    {
-                        //In backend but it does not exist anymore
-                        return false;
-                    }
-                    //Valid entry, return it
-                    return true;
+                    return it->second;
                 }
                 //Not in backend
-                return false;
+                return nullptr;
             };
-            virtual bool create(std::string name)
+            bool create(std::string name)
             {
                 T* t = new T();
                 if(t != nullptr)
@@ -113,24 +99,25 @@ namespace mdcore{
                 }
                 return false;
             };
-            bool getOrCreate(T*& t, std::string name)
+            T* getOrCreate(std::string name)
             {
-                if(get(t, name))
+                T *t = get(name);
+                if (t != nullptr)
                 {
-                    return true;
+                    return t;
                 }
                 bool result = create(name);
                 if(!result)
                 {
-                    return false;
+                    return nullptr;
                 }
-                get(t, name);
-                return true;
+                t = get(name);
+                return t;
             };
             void remove(std::string name)
             {
-                T* t;
-                if(get(t, name))
+                T* t = get(name);
+                if(t != nullptr)
                 {
                     delete t;
                     backend[name] = nullptr;

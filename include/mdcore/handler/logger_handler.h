@@ -9,10 +9,10 @@ namespace mdcore{
         public:
             LoggerHandler(std::string name)
             {
-                getOrCreate(defaultLogger, name);
+                defaultLogger = getOrCreate(name);
             };
-            ~LoggerHandler();
-            bool getDefaultLogger(Logger*& logger);
+            ~LoggerHandler(){};
+            Logger* getDefaultLogger();
 
         private:
             LoggerHandler();

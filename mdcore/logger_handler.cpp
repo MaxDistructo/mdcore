@@ -2,7 +2,7 @@
 
 namespace mdcore
 {
-    bool LoggerHandler::getDefaultLogger(Logger*& logger)
+    Logger* LoggerHandler::getDefaultLogger()
     {
         return defaultLogger;
     };

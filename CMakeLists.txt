@@ -5,5 +5,6 @@ set(HEADER_ONLY_SOURCES lib/json.hpp)
 
 #add_executable(mdcore_testbot main.cpp ${HEADER_ONLY_SOURCES})
 add_subdirectory(mdcore)
+add_subdirectory(test)
 #target_link_libraries(mdcore sleepy-discord)
 #target_link_libraries(mdcore_testbot mdcore sleepy-discord)
