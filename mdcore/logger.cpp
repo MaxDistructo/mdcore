@@ -1,11 +1,10 @@
 #include "../include/mdcore/logger.h"
 #include <ctime>
 
-using namespace mdcore;
+namespace mdcore{
 const TerminalColor COLOR;
 const std::string currentDateTime();
 
-Logger::~Logger(){};
 void Logger::info(std::string message)
 {
     if(level <= LoggerLevel::INFO){
@@ -61,4 +60,5 @@ const std::string currentDateTime() {
     strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
 
     return buf;
+}
 }

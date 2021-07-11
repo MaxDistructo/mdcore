@@ -21,7 +21,7 @@ namespace mdcore{
                 {
                     this->logger_name = name;
                 };
-                ~Logger();
+                ~Logger(){};
                 void info(std::string message);
                 void debug(std::string message);
                 void warning(std::string message);
