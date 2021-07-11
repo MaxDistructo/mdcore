@@ -65,16 +65,16 @@ namespace mdcore{
 
     std::string ConfigHandler::getAbsoluteFilePath(std::string fileName)
     {
-        std::ifstream stream;
+        std::ifstream s;
         for(auto path : searchPath)
         {
             std::string testPath = path + fileName;
-            if(openFile(testPath, stream))
+            if(openFile(testPath, s))
             {
-                stream.close();
+                s.close();
                 return testPath;
             }
-            stream.close();
+            s.close();
         }
         return "";
     }
