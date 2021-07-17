@@ -3,6 +3,7 @@
 #include <ostream>
 #include <vector>
 #include <algorithm>
+#include <map>
 
 bool openFile(std::string filename, std::ifstream& stream);
 bool openFile(std::string filename, std::ifstream* stream);
@@ -64,3 +65,48 @@ std::string toString(std::vector<T> v)
     return toString(v, ", ");
 }
 
+template<class T, class K>
+using MapIterator = typename std::map<T, K>::const_iterator;
+
+template<class T, class K>
+std::string toString(std::map<T, K> m, std::string seperator)
+{
+    std::string out;
+    for (MapIterator<T, K> i = m.begin(); i < m.end(); i++)
+    {
+        if (i != (m.end() - 1))
+        {
+            out += (*i).first + " : " +  (*i).second + seperator;
+        }
+        else
+        {
+            out += (*i).first + " : " + (*i).second;
+        }
+    }
+    return out;
+}
+
+template<class T, class K>
+std::string toString(std::map<T, K> m)
+{
+    return toString(m, ", ");
+}
+
+template <class T, class K>
+std::string toJson(std::map<T, K> m)
+{
+    std::string out = "{\n";
+    for (MapIterator<T, K> i = m.begin(); i < m.end(); i++)
+    {
+        if (i != (m.end() - 1))
+        {
+            out += "\"" + (*i).first + "\"" + " : " + "\"" + (*i).second + "\", \n";
+        }
+        else
+        {
+            out += "\"" + (*i).first + "\"" + " : " + "\"" + (*i).second + "\"\n";
+        }
+    }
+    out += "}";
+    return out;
+}
