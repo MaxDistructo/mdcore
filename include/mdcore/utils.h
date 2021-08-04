@@ -92,21 +92,4 @@ std::string toString(std::map<T, K> m)
     return toString(m, ", ");
 }
 
-template <class T, class K>
-std::string toJson(std::map<T, K> m)
-{
-    std::string out = "{\n";
-    for (MapIterator<T, K> i = m.begin(); i < m.end(); i++)
-    {
-        if (i != (m.end() - 1))
-        {
-            out += "\"" + (*i).first + "\"" + " : " + "\"" + (*i).second + "\", \n";
-        }
-        else
-        {
-            out += "\"" + (*i).first + "\"" + " : " + "\"" + (*i).second + "\"\n";
-        }
-    }
-    out += "}";
-    return out;
-}
+

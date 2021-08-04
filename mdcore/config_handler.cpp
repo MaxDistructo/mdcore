@@ -58,7 +58,7 @@ namespace mdcore{
         if(path != ""){
             io_manager.open(getAbsoluteFilePath(path));
             io_manager.get(stream, path);
-            //backend >> stream;
+            *stream << toJson(backend);
         }
         //We have no clue where the data is from, cannot write to file.
     };

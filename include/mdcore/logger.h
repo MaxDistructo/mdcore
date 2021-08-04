@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "json.hpp"
+#include "../../lib/json.hpp"
 #include <fstream>
 
 namespace mdcore{
@@ -42,7 +42,7 @@ namespace mdcore{
                 {
                     try{
                         std::ifstream file;
-                        file.open("config/config.json");
+                        file.open("config/logger_config.json");
                         if(!file.is_open())
                         {
                             return mdcore::LoggerLevel::INFO;
