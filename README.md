@@ -7,3 +7,6 @@ Designed using GCC 11
 Basic CMake config. Add as any other dependency in CMake
 This repo relies on nlohmann::json that it includes, files using this are marked as json. source: https://github.com/nlohmann/json
 Everything else is self-sufficient, without the need for any external libraries
+
+##License
+You are able to use this code in your own projects as long as credit is given to this repo.
