@@ -8,6 +8,7 @@ namespace mdcore {
             Matrix();
             std::pair<int, int> size;
             std::vector<std::vector<double>*>* arr;
+            std::vector<std::vector<double>*> col_entries = std::vector<std::vector<double>*>();
         public:
             ~Matrix();
             //Copy Constructor
@@ -16,7 +17,10 @@ namespace mdcore {
             Matrix(std::vector<double>, std::pair<int, int>);
             const std::pair<int, int> getSize();
             double valueAt(int x, int y);
-            Matrix operator*(Matrix);
+            std::vector<double>* get_row(int);
+            std::vector<double>* get_col(int);
+            void gc();
+            Matrix* operator*(Matrix);
             Matrix operator*(double);
             Matrix operator+(Matrix);
             Matrix operator-(Matrix);
