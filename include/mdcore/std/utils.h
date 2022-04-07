@@ -5,19 +5,19 @@
 #include <algorithm>
 #include <map>
 
-bool openFile(std::string filename, std::ifstream& stream);
-bool openFile(std::string filename, std::ifstream* stream);
-bool openFile(std::string filename, std::ofstream& stream);
-bool writeFile(std::string filename, std::string contents);
+bool open_file(std::string filename, std::ifstream& stream);
+bool open_file(std::string filename, std::ifstream* stream);
+bool open_file(std::string filename, std::ofstream& stream);
+bool write_file(std::string filename, std::string contents);
 
 template<class T>
-bool vectorContains(const std::vector<T>& v, const T& t)
+bool vector_contains(const std::vector<T>& v, const T& t)
 {
     return std::count(v.begin(), v.end(), t);
 }
 
 template<class T>
-typename std::vector<T>::iterator getIterLocation(std::vector<T> v, T t)
+typename std::vector<T>::iterator get_iter_location(std::vector<T> v, T t)
 {
     for(typename std::vector<T>::iterator iter; iter < v.end(); iter++)
     {
@@ -30,7 +30,7 @@ typename std::vector<T>::iterator getIterLocation(std::vector<T> v, T t)
 }
 
 template<class T>
-int getIndex(std::vector<T> v, T t)
+int get_index(std::vector<T> v, T t)
 {
     for(size_t i = 0; i < v.size(); i++)
     {
@@ -43,7 +43,7 @@ int getIndex(std::vector<T> v, T t)
 }
 
 template<class T>
-std::string toString(std::vector<T> v, std::string seperator)
+std::string to_string(std::vector<T> v, std::string seperator)
 {
     std::string out;
     for(size_t i = 0; i < v.size(); i++)
@@ -60,16 +60,16 @@ std::string toString(std::vector<T> v, std::string seperator)
 }
 
 template<class T>
-std::string toString(std::vector<T> v)
+std::string to_string(std::vector<T> v)
 {
-    return toString(v, ", ");
+    return to_string(v, ", ");
 }
 
 template<class T, class K>
 using MapIterator = typename std::map<T, K>::const_iterator;
 
 template<class T, class K>
-std::string toString(std::map<T, K> m, std::string seperator)
+std::string to_string(std::map<T, K> m, std::string seperator)
 {
     std::string out;
     for (MapIterator<T, K> i = m.begin(); i < m.end(); i++)
@@ -87,9 +87,9 @@ std::string toString(std::map<T, K> m, std::string seperator)
 }
 
 template<class T, class K>
-std::string toString(std::map<T, K> m)
+std::string to_string(std::map<T, K> m)
 {
-    return toString(m, ", ");
+    return to_string(m, ", ");
 }
 
 

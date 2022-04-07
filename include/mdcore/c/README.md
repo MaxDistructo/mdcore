@@ -1,0 +1,1 @@
+These C implementations are designed for systems that do NOT have the libc++std library and are not tested. It is preferred to use the std implementations when able.
