@@ -66,6 +66,7 @@ namespace mdcore{
     typedef DoubleLinkedList<int> IntegerLinkedList;
     typedef DoubleLinkedList<char> CharLinkedList;
     typedef DoubleLinkedList<long> LongLinkedList;
+
     template<class T>
     class SortedSingleLinkedList: public SingleLinkedList<T>
     {

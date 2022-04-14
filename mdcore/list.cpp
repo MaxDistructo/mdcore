@@ -326,4 +326,167 @@ namespace mdcore{
         return size;
     }
 
+    template<class T>
+    LinkedList<T>::LinkedList()
+    {
+        //Call the superclass constructor. This will setup the proper values.
+        DoubleLinkedList<T>();
+    }
+
+    template<class T>
+    LinkedList<T>::~LinkedList()
+    {
+        ~DoubleLinkedList<T>();
+    }
+
+    template<class T>
+    SortedSingleLinkedList<T>::SortedSingleLinkedList()
+    {
+        size = 0;
+        first_node = nullptr;
+        last_node = nullptr;
+    }
+
+    template<class T>
+    SortedSingleLinkedList<T>::~SortedSingleLinkedList()
+    {
+        //We don't need to run our own destructor as the destructor
+        //of our superclass takes care of it.
+        ~SingleLinkedList();
+    }
+
+    template<class T>
+    void SortedSingleLinkedList<T>::push_back(T value)
+    {
+        //TODO: Fix the sort logic
+    } 
+
+    template<class T>
+    void SortedSingleLinkedList<T>::operator+(T value)
+    {
+        //This doesn't get inherited, redeclare it.
+        push_back(value);
+    }
+
+    template<class T>
+    bool SortedSingleLinkedList<T>::operator=(SortedSingleLinkedList<T> list)
+    {
+
+
+        //Sanity Checks
+        // 1. Is this the same list being compared to itself
+        if(list.begin() == first_node && list.last() == last_node)
+        {
+            //This is the same list... just why are you doing this?
+            return true;
+        }
+
+        // 2. Are the lists the same size?
+        if(list.get_size() != size)
+        {
+            return false;
+        }
+
+        // 3. Check the end points.
+        if(list.begin()->value != first_node->value || list.last()->value != last_node->value)
+        {
+            return false;
+        }
+
+
+        //With it being a sane comparison of 2 different lists of the same size
+        //Loop over both lists and as soon as we find an element that does not match, return false.
+        //This is the most time intensive part of this function.
+
+        SingleNode* node1 = first_node;
+        SingleNode* node2 = list.begin();
+
+        while(node1 != nullptr)
+        {
+            if(node1->value != node2->value)
+            {
+                return false
+            }
+            node1 = node1->next;
+            node2 = node2->next;
+        } 
+
+        return true;
+    }
+
+        template<class T>
+    SortedDoubleLinkedList<T>::SortedDoubleLinkedList()
+    {
+        size = 0;
+        first_node = nullptr;
+        last_node = nullptr;
+    }
+
+    template<class T>
+    SortedDoubleLinkedList<T>::~SortedDoubleLinkedList()
+    {
+        //We don't need to run our own destructor as the destructor
+        //of our superclass takes care of it.
+        ~DoubleLinkedList();
+    }
+
+    template<class T>
+    void SortedDoubleLinkedList<T>::push_back(T value)
+    {
+        //TODO: Fix the sort logic
+    } 
+
+    template<class T>
+    void SortedDoubleLinkedList<T>::operator+(T value)
+    {
+        //This doesn't get inherited, redeclare it.
+        push_back(value);
+    }
+
+    template<class T>
+    bool SortedDoubleLinkedList<T>::operator=(SortedDoubleLinkedList<T> list)
+    {
+
+
+        //Sanity Checks
+        // 1. Is this the same list being compared to itself
+        if(list.begin() == first_node && list.last() == last_node)
+        {
+            //This is the same list... just why are you doing this?
+            return true;
+        }
+
+        // 2. Are the lists the same size?
+        if(list.get_size() != size)
+        {
+            return false;
+        }
+
+        // 3. Check the end points.
+        if(list.begin()->value != first_node->value || list.last()->value != last_node->value)
+        {
+            return false;
+        }
+
+
+        //With it being a sane comparison of 2 different lists of the same size
+        //Loop over both lists and as soon as we find an element that does not match, return false.
+        //This is the most time intensive part of this function.
+
+        DoubleNode* node1 = first_node;
+        DoubleNode* node2 = list.begin();
+
+        while(node1 != nullptr)
+        {
+            if(node1->value != node2->value)
+            {
+                return false
+            }
+            node1 = node1->next;
+            node2 = node2->next;
+        } 
+
+        return true;
+    }
+
 }
