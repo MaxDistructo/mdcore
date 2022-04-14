@@ -7,7 +7,7 @@ bool write_file(char* filename, char* contents);
 template<class T>
 char* to_string(T* v, char seperator)
 {
-    std::string out;
+    char* out;
     for(size_t i = 0; i < v.size(); i++)
     {
         if(i != (v.size() - 1))

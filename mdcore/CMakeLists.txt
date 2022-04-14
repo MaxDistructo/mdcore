@@ -1,9 +1,12 @@
 add_library(mdcore STATIC
 	config_handler.cpp
 	json_utils.cpp
-	logger.cpp
+	c/logger.cpp
+	c/cutils.cpp
+	std/logger.cpp
+	std/utils.cpp
 	logger_handler.cpp
-	utils.cpp
+	list.cpp
 )
 
 find_package(Threads)

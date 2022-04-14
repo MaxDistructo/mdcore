@@ -1,11 +1,11 @@
 #include "../include/mdcore/json_utils.h"
-#include "../include/mdcore/utils.h"
+#include "../include/mdcore/std/utils.h"
 #include <fstream>
 
 nlohmann::json readJsonFromFile(std::string filename)
 {
     std::ifstream file;
-    openFile("config/config.json", file);
+    open_file("config/config.json", file);
     nlohmann::json f_json = nlohmann::json::parse(file);
     return f_json;
 }

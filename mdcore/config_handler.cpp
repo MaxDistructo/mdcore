@@ -1,5 +1,5 @@
 #include "../include/mdcore/handler/config_handler.h"
-#include "../include/mdcore/utils.h"
+#include "../include/mdcore/std/utils.h"
 #include "../include/mdcore/json_utils.h"
 
 namespace mdcore{
@@ -39,14 +39,14 @@ namespace mdcore{
     };
     void ConfigHandler::removeSearchPath(const std::string& path)
     {
-        if(vectorContains(searchPath, path) > 0)
+        if(vector_contains(searchPath, path) > 0)
         {
-            searchPath.erase(getIterLocation(searchPath, path));
+            searchPath.erase(get_iter_location(searchPath, path));
         }
     };
     bool ConfigHandler::searchPathContains(const std::string& path)
     {
-        return vectorContains(searchPath, path);
+        return vector_contains(searchPath, path);
     };
 
     //Kind of a lazy function but allows users to forget writing to file
@@ -69,7 +69,7 @@ namespace mdcore{
         for(auto path : searchPath)
         {
             std::string testPath = path + fileName;
-            if(openFile(testPath, s))
+            if(open_file(testPath, s))
             {
                 s.close();
                 return testPath;

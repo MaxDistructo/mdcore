@@ -45,7 +45,7 @@ namespace mdcore{
     template<class T>
     void SingleLinkedList<T>::push_back(T val)
     {
-        SingleNode<T>* next = new (std::nothrow) SingleNode<T>();
+        SingleNode<T>* next = new SingleNode<T>();
         next->value = val;
         last_node->next = next;
         last_node = next;
@@ -101,7 +101,7 @@ namespace mdcore{
     T SingleLinkedList<T>::get(int index)
     {
         SingleNode<T>* node = begin();
-        for(int i = 0; i < size, i++)
+        for(int i = 0; i < size; i++)
         {
             if(i == index)
             {
@@ -109,7 +109,7 @@ namespace mdcore{
             }
             node = node->next;
         }
-        throw std::out_of_range;
+        throw -1;
     }
     template<class T>
     void SingleLinkedList<T>::operator+(T value)
@@ -205,7 +205,7 @@ namespace mdcore{
     template<class T>
     void DoubleLinkedList<T>::push_back(T val)
     {
-        DoubleNode<T>* next = new (std::nothrow) DoubleNode<T>();
+        DoubleNode<T>* next = new  DoubleNode<T>();
         next->value = val;
         next->prev = last_node;
         last_node->next = next;
@@ -265,7 +265,7 @@ namespace mdcore{
     T DoubleLinkedList<T>::get(int index)
     {
         DoubleNode<T>* node = begin();
-        for(int i = 0; i < size, i++)
+        for(int i = 0; i < size; i++)
         {
             if(i == index)
             {
@@ -273,7 +273,7 @@ namespace mdcore{
             }
             node = node->next;
         }
-        throw std::out_of_range;
+        throw -1;
     }
     template<class T>
     void DoubleLinkedList<T>::operator+(T value)
@@ -342,9 +342,9 @@ namespace mdcore{
     template<class T>
     SortedSingleLinkedList<T>::SortedSingleLinkedList()
     {
-        size = 0;
-        first_node = nullptr;
-        last_node = nullptr;
+        this.size = 0;
+        this.first_node = nullptr;
+        this.last_node = nullptr;
     }
 
     template<class T>
@@ -352,7 +352,6 @@ namespace mdcore{
     {
         //We don't need to run our own destructor as the destructor
         //of our superclass takes care of it.
-        ~SingleLinkedList();
     }
 
     template<class T>
@@ -375,20 +374,20 @@ namespace mdcore{
 
         //Sanity Checks
         // 1. Is this the same list being compared to itself
-        if(list.begin() == first_node && list.last() == last_node)
+        if(list.begin() == this.first_node && list.last() == this.last_node)
         {
             //This is the same list... just why are you doing this?
             return true;
         }
 
         // 2. Are the lists the same size?
-        if(list.get_size() != size)
+        if(list.get_size() != this.size)
         {
             return false;
         }
 
         // 3. Check the end points.
-        if(list.begin()->value != first_node->value || list.last()->value != last_node->value)
+        if(list.begin()->value != this.first_node->value || list.last()->value != this.last_node->value)
         {
             return false;
         }
@@ -398,14 +397,14 @@ namespace mdcore{
         //Loop over both lists and as soon as we find an element that does not match, return false.
         //This is the most time intensive part of this function.
 
-        SingleNode* node1 = first_node;
-        SingleNode* node2 = list.begin();
+        SingleNode<T>* node1 = this.first_node;
+        SingleNode<T>* node2 = list.begin();
 
         while(node1 != nullptr)
         {
             if(node1->value != node2->value)
             {
-                return false
+                return false;
             }
             node1 = node1->next;
             node2 = node2->next;
@@ -417,9 +416,9 @@ namespace mdcore{
         template<class T>
     SortedDoubleLinkedList<T>::SortedDoubleLinkedList()
     {
-        size = 0;
-        first_node = nullptr;
-        last_node = nullptr;
+        this.size = 0;
+        this.first_node = nullptr;
+        this.last_node = nullptr;
     }
 
     template<class T>
@@ -427,7 +426,7 @@ namespace mdcore{
     {
         //We don't need to run our own destructor as the destructor
         //of our superclass takes care of it.
-        ~DoubleLinkedList();
+        //~DoubleLinkedList();
     }
 
     template<class T>
@@ -450,20 +449,20 @@ namespace mdcore{
 
         //Sanity Checks
         // 1. Is this the same list being compared to itself
-        if(list.begin() == first_node && list.last() == last_node)
+        if(list.begin() == this.first_node && list.last() == this.last_node)
         {
             //This is the same list... just why are you doing this?
             return true;
         }
 
         // 2. Are the lists the same size?
-        if(list.get_size() != size)
+        if(list.get_size() != this.size)
         {
             return false;
         }
 
         // 3. Check the end points.
-        if(list.begin()->value != first_node->value || list.last()->value != last_node->value)
+        if(list.begin()->value != this.first_node->value || list.last()->value != this.last_node->value)
         {
             return false;
         }
@@ -473,14 +472,14 @@ namespace mdcore{
         //Loop over both lists and as soon as we find an element that does not match, return false.
         //This is the most time intensive part of this function.
 
-        DoubleNode* node1 = first_node;
-        DoubleNode* node2 = list.begin();
+        DoubleNode<T>* node1 = this.first_node;
+        DoubleNode<T>* node2 = list.begin();
 
         while(node1 != nullptr)
         {
             if(node1->value != node2->value)
             {
-                return false
+                return false;
             }
             node1 = node1->next;
             node2 = node2->next;
