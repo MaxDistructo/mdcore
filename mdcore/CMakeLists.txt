@@ -14,7 +14,7 @@ find_package(Threads)
 target_include_directories(mdcore
 	PUBLIC
 		${PROJECT_SOURCE_DIR}/include
-		${PROJECT_SOURCE_DIR}/lib
+		${nlohmann_json_SOURCE_DIR}/single_include/nlohmann
 	PRIVATE
 		${PROJECT_SOURCE_DIR}/include/mdcore
 )

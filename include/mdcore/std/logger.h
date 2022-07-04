@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "../../lib/json.hpp"
+#include <json.hpp>
 #include <fstream>
 
 namespace mdcore{
