@@ -2,16 +2,7 @@
 cmake_minimum_required(VERSION 3.12.0)
 project(mdcore)
 
-include(FetchContent)
-FetchContent_Declare(
-    nlohmann_json
-    GIT_REPOSITORY https://github.com/nlohmann/json.git
-    GIT_TAG        4f8fba14066156b73f1189a2b8bd568bde5284c5
-)
-
-FetchContent_MakeAvailable(nlohmann_json)
-set(HEADER_ONLY_SOURCES lib/json.hpp)
+file(DOWNLOAD https://raw.githubusercontent.com/nlohmann/json/v3.10.5/single_include/nlohmann/json.hpp ${PROJECT_BINARY_DIR}/nlohmann_json/include/nlohmann/json.hpp)
 
 add_subdirectory(mdcore)
-target_link_libraries(nlohmann_json)
 #add_subdirectory(test)
