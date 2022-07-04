@@ -6,7 +6,8 @@
  * @brief This creates a basic terminal menu
  * 
  */
-template<class BackingStore, class StringType>
+//This template allows us to use ANY Container backing store that implements what we need.
+template< template<typename, typename> class BackingStore, class StringType, class A>
 class TerminalMenu
 {
     public:
