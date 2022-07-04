@@ -1,13 +1,14 @@
 #pragma once
 
 #include <stdio.h>
+#include <vector>
+#include <string>
 
 /**
  * @brief This creates a basic terminal menu
  * 
  */
 //This template allows us to use ANY Container backing store that implements what we need.
-template< template<typename, typename> class BackingStore, class StringType, class A>
 class TerminalMenu
 {
     public:
@@ -17,9 +18,9 @@ class TerminalMenu
          * @brief Adds an option to the menu
          * 
          */
-        void add_option(StringType option)
+        void add_option(std::string option)
         {
-            options += option;
+            options.push_back(option);
         }
         /**
          * @brief Has the menu run and return an input to you
@@ -42,12 +43,12 @@ class TerminalMenu
             }
         }
     private:
-        BackingStore<StringType> options;
+        std::vector<std::string> options;
         // Helper Functions
         void print_options()
         {
             int i = 1;
-            for(StringType option : options)
+            for(std::string option : options)
             {
                 printf("{}) {}{}", i++, option, '\n');
             }

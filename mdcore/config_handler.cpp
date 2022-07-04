@@ -1,6 +1,6 @@
-#include "../include/mdcore/handler/config_handler.h"
-#include "../include/mdcore/std/utils.h"
-#include "../include/mdcore/json_utils.h"
+#include "mdcore/handler/config_handler.h"
+#include "mdcore/std/utils.h"
+#include "mdcore/json_utils.h"
 
 namespace mdcore{
     void ConfigHandler::write(const std::string& identifier, std::string string)
