@@ -7,7 +7,7 @@ bool open_file(char* filename, FILE*& stream)
 };
 bool write_file(FILE* file, char* contents)
 {
-    int ret = fprintf(file, contents);
+    int ret = fputs(contents, file);
     return ret > 0;
 }
 bool write_file(char* filename, char* contents)
@@ -18,7 +18,7 @@ bool write_file(char* filename, char* contents)
     {
         return false;
     }
-    int ret = fprintf(file, contents);
+    int ret = fputs(contents, file);
     fclose(file);
     return ret > 0;
 }
