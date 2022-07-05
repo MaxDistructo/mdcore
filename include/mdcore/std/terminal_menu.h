@@ -101,9 +101,10 @@ class TerminalMenu
             }
             else
             {
-                printf(invalid_message.c_str());
+                printf("%s", invalid_message.c_str());
                 execute();
             } 
+            return 0;
         }
     private:
         /**
