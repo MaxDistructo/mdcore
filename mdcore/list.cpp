@@ -9,6 +9,45 @@ namespace mdcore{
         last_node = nullptr;
     }
     template<class T>
+    SingleLinkedList<T>::SingleLinkedList(SingleLinkedList<T>& list)
+    {
+        size = list.size;
+        if(size == 0)
+        {
+            //Early return for a 0 size list
+            first_node = nullptr;
+            last_node = nullptr;
+            return;
+        }
+        //Call copy constructor or the struct with the other node
+        first_node = new SingleNode<T>(list.first_node);
+        if(list.first_node == list.last_node){
+
+            last_node = first_node;
+            first_node.next = nullptr;
+            return;
+        }
+        //Init next ptr since we know it's not null
+        first_node->next = new SingleNode<T>(list.first_node->next);
+
+        SingleNode<T>* prev_node = list.first_node;
+        SingleNode<T>* next_node = list.first_node->next;
+        SingleNode<T>* our_prev = first_node;
+        SingleNode<T>* our_next = first_node->next;
+
+        while(next_node != nullptr)
+        {
+            our_next->next = new SingleNode<T>(next_node->next);
+
+            our_prev = our_next;
+            our_next = our_prev->next;
+            prev_node = next_node;
+            next_node = prev_node->next;
+        }
+        last_node = our_prev;
+        return;
+    }
+    template<class T>
     SingleLinkedList<T>::~SingleLinkedList()
     {
         if (first_node == nullptr && last_node == nullptr)
@@ -112,14 +151,7 @@ namespace mdcore{
         throw -1;
     }
     template<class T>
-    void SingleLinkedList<T>::operator+(T value)
-    {
-        //Don't over complicate this or duplicate code
-        //Just redirect the value to where it should.
-        push_back(value);
-    }
-    template<class T>
-    bool SingleLinkedList<T>::operator=(SingleLinkedList<T> list)
+    bool SingleLinkedList<T>::operator==(SingleLinkedList<T> list)
     {
         if(first_node == list.begin() && last_node == list.end())
         {
@@ -145,6 +177,26 @@ namespace mdcore{
 
         }
         return false;
+    }
+    template<class T>
+    SingleLinkedList<T> SingleLinkedList<T>::operator=(SingleLinkedList<T> list)
+    {
+        return SingleLinkedList<T>(list);
+    }
+    template<class T>
+    SingleLinkedList<T> SingleLinkedList<T>::operator+=(T item)
+    {
+        this->push_back(item);
+    }
+    template<class T>        
+    SingleLinkedList<T> SingleLinkedList<T>::operator+=(SingleLinkedList<T>& list)
+    {
+        SingleNode<T> item = list->first_node();
+        while(item != nullptr)
+        {
+            this->push_back(item.value);
+            item = item->next;
+        }
     }
     template<class T>
     SingleNode<T>* SingleLinkedList<T>::begin()

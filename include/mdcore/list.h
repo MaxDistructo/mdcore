@@ -3,7 +3,7 @@ namespace mdcore{
     template<class T>
     struct SingleNode
     {
-        SingleNode* next;
+        SingleNode* next = nullptr;
         T value;
     };
     template<class T>
@@ -16,12 +16,15 @@ namespace mdcore{
             SingleNode<T>* last_node;
         public:
             SingleLinkedList();
+            SingleLinkedList(SingleLinkedList<T>&);
             ~SingleLinkedList();
             void push_back(T value);
             void remove(T value);
             T get(int index);
-            void operator+(T value);
-            bool operator=(SingleLinkedList<T> list);
+            SingleLinkedList<T> operator=(SingleLinkedList<T>);
+            bool operator==(SingleLinkedList<T>);
+            SingleLinkedList<T> operator+=(T);
+            SingleLinkedList<T> operator+=(SingleLinkedList<T>&);
             SingleNode<T>* begin();
             SingleNode<T>* last();
             int get_size();
