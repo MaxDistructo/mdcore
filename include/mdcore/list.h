@@ -50,7 +50,7 @@ namespace mdcore{
             void remove(T value);
             T get(int i);
             void operator+(T value);
-            bool operator=(DoubleLinkedList<T> list);
+            bool operator==(DoubleLinkedList<T> list);
             DoubleNode<T>* begin();
             DoubleNode<T>* last();
             int get_size();

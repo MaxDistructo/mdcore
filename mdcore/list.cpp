@@ -335,7 +335,7 @@ namespace mdcore{
         push_back(value);
     }
     template<class T>
-    bool DoubleLinkedList<T>::operator=(DoubleLinkedList<T> list)
+    bool DoubleLinkedList<T>::operator==(DoubleLinkedList<T> list)
     {
         if(first_node == list.begin() && last_node == list.end())
         {
