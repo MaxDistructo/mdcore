@@ -25,6 +25,10 @@ namespace mdcore{
                 void info(char* message);
                 void debug(char* message);
                 void warning(char* message);
+                void warn(char* message)
+                {
+                    warning(message);
+                }
                 void error(char* message);
                 void fatal(char* message);
                 void setLevel(LoggerLevel level);

@@ -26,6 +26,10 @@ namespace mdcore{
                 void info(std::string message);
                 void debug(std::string message);
                 void warning(std::string message);
+                void warn(std::string message)
+                {
+                    warning(message);
+                }
                 void error(std::string message);
                 void fatal(std::string message);
                 void setLevel(LoggerLevel level);
