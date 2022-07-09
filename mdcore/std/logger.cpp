@@ -1,9 +1,14 @@
-#include "../include/mdcore/std/logger.h"
+#include <mdcore/std/logger.h>
 #include <ctime>
 
 namespace mdcore{
 const TerminalColor COLOR;
 const std::string currentDateTime();
+
+void Logger::set_outputstream(FILE* file)
+{
+    output_stream = file;
+}
 
 void Logger::info(std::string message)
 {
