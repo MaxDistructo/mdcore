@@ -9,10 +9,10 @@ void Logger::info(char* message)
 {
     const char* current = currentDateTime();
     if(level <= LoggerLevel::INFO){
-        printf("%s", COLOR.WHITE);
-        printf("%s%s%s%s%s%s", "[INFO] [", current, "] [" , this->logger_name , "] " , message);    
-        printf("%s", COLOR.RESET);
-        printf("%s", "\n");
+        fprintf(output_stream, "%s", COLOR.WHITE);
+        fprintf(output_stream, "%s%s%s%s%s%s", "[INFO] [", current, "] [" , this->logger_name , "] " , message);    
+        fprintf(output_stream, "%s", COLOR.RESET);
+        fprintf(output_stream, "%s", "\n");
     }
     delete current;
 };
@@ -20,10 +20,10 @@ void Logger::debug(char* message)
 {
     const char* current = currentDateTime();
     if(level <= LoggerLevel::DEBUG){
-        printf("%s", COLOR.YELLOW);
-        printf("%s%s%s%s%s%s", "[DEBUG] [", current, "] [" , this->logger_name , "] " , message);    
-        printf("%s", COLOR.RESET);
-        printf("%s", "\n");
+        fprintf(output_stream, "%s", COLOR.YELLOW);
+        fprintf(output_stream, "%s%s%s%s%s%s", "[DEBUG] [", current, "] [" , this->logger_name , "] " , message);    
+        fprintf(output_stream, "%s", COLOR.RESET);
+        fprintf(output_stream, "%s", "\n");
     }
     delete current;
 };
@@ -31,10 +31,10 @@ void Logger::warning(char* message)
 {
     const char* current = currentDateTime();
     if(level <= LoggerLevel::WARNING){
-        printf("%s", COLOR.BOLD_YELLOW);
-        printf("%s%s%s%s%s%s", "[WARN] [", current, "] [" , this->logger_name , "] " , message);      
-        printf("%s", COLOR.RESET);
-        printf("%s", "\n");
+        fprintf(output_stream, "%s", COLOR.BOLD_YELLOW);
+        fprintf(output_stream, "%s%s%s%s%s%s", "[WARN] [", current, "] [" , this->logger_name , "] " , message);      
+        fprintf(output_stream, "%s", COLOR.RESET);
+        fprintf(output_stream, "%s", "\n");
     }
     delete current;
 };
@@ -42,10 +42,10 @@ void Logger::error(char* message)
 {
     const char* current = currentDateTime();
     if(level <= LoggerLevel::ERROR){
-        printf("%s", COLOR.RED);
-        printf("%s%s%s%s%s%s", "[ERROR] [", current, "] [" , this->logger_name , "] " , message);     
-        printf("%s", COLOR.RESET);
-        printf("%s", "\n");
+        fprintf(output_stream, "%s", COLOR.RED);
+        fprintf(output_stream, "%s%s%s%s%s%s", "[ERROR] [", current, "] [" , this->logger_name , "] " , message);     
+        fprintf(output_stream, "%s", COLOR.RESET);
+        fprintf(output_stream, "%s", "\n");
     }
     delete current;
 };
@@ -53,10 +53,10 @@ void Logger::fatal(char* message)
 {
     const char* current = currentDateTime();
     if(level <= LoggerLevel::FATAL){
-        printf("%s", COLOR.BOLD_RED);
-        printf("%s%s%s%s%s%s", "[FATAL] [", current, "] [" , this->logger_name , "] " , message);      
-        printf("%s", COLOR.RESET);
-        printf("%s", "\n");
+        fprintf(output_stream, "%s", COLOR.BOLD_RED);
+        fprintf(output_stream, "%s%s%s%s%s%s", "[FATAL] [", current, "] [" , this->logger_name , "] " , message);      
+        fprintf(output_stream, "%s", COLOR.RESET);
+        fprintf(output_stream, "%s", "\n");
     }
     delete current;
 };

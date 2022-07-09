@@ -8,46 +8,46 @@ const std::string currentDateTime();
 void Logger::info(std::string message)
 {
     if(level <= LoggerLevel::INFO){
-        printf("%s", COLOR.WHITE);
-        printf("%s", ((std::string)"[INFO] [" + currentDateTime() + "] [" + this->logger_name + "] " + message).c_str());    
-        printf("%s", COLOR.RESET);
-        printf("%s", "\n");
+        fprintf(output_stream, "%s", COLOR.WHITE);
+        fprintf(output_stream, "%s", ((std::string)"[INFO] [" + currentDateTime() + "] [" + this->logger_name + "] " + message).c_str());    
+        fprintf(output_stream, "%s", COLOR.RESET);
+        fprintf(output_stream, "%s", "\n");
     }
 };
 void Logger::debug(std::string message)
 {
     if(level <= LoggerLevel::DEBUG){
-        printf("%s", COLOR.YELLOW);
-        printf("%s", ((std::string)"[DEBUG] [" + currentDateTime() + "] [" + this->logger_name + "] " + message).c_str());    
-        printf("%s", COLOR.RESET);
-        printf("%s", "\n");
+        fprintf(output_stream, "%s", COLOR.YELLOW);
+        fprintf(output_stream, "%s", ((std::string)"[DEBUG] [" + currentDateTime() + "] [" + this->logger_name + "] " + message).c_str());    
+        fprintf(output_stream, "%s", COLOR.RESET);
+        fprintf(output_stream, "%s", "\n");
     }
 };
 void Logger::warning(std::string message)
 {
     if(level <= LoggerLevel::WARNING){
-        printf("%s", COLOR.BOLD_YELLOW);
-        printf("%s", ((std::string)"[WARNING] [" + currentDateTime() + "] [" + this->logger_name + "] " + message).c_str());    
-        printf("%s", COLOR.RESET);
-        printf("%s", "\n");
+        fprintf(output_stream, "%s", COLOR.BOLD_YELLOW);
+        fprintf(output_stream, "%s", ((std::string)"[WARNING] [" + currentDateTime() + "] [" + this->logger_name + "] " + message).c_str());    
+        fprintf(output_stream, "%s", COLOR.RESET);
+        fprintf(output_stream, "%s", "\n");
     }
 };
 void Logger::error(std::string message)
 {
     if(level <= LoggerLevel::ERROR){
-        printf("%s", COLOR.RED);
-        printf("%s", ((std::string)"[ERROR] [" + currentDateTime() + "] [" + this->logger_name + "] " + message).c_str());    
-        printf("%s", COLOR.RESET);
-        printf("%s", "\n");
+        fprintf(output_stream, "%s", COLOR.RED);
+        fprintf(output_stream, "%s", ((std::string)"[ERROR] [" + currentDateTime() + "] [" + this->logger_name + "] " + message).c_str());    
+        fprintf(output_stream, "%s", COLOR.RESET);
+        fprintf(output_stream, "%s", "\n");
     }
 };
 void Logger::fatal(std::string message)
 {
     if(level <= LoggerLevel::FATAL){
-        printf("%s", COLOR.BOLD_RED);
-        printf("%s", ((std::string)"[FATAL] [" + currentDateTime() + "] [" + this->logger_name + "] " + message).c_str());    
-        printf("%s", COLOR.RESET);
-        printf("%s", "\n");
+        fprintf(output_stream, "%s", COLOR.BOLD_RED);
+        fprintf(output_stream, "%s", ((std::string)"[FATAL] [" + currentDateTime() + "] [" + this->logger_name + "] " + message).c_str());    
+        fprintf(output_stream, "%s", COLOR.RESET);
+        fprintf(output_stream, "%s", "\n");
     }
 };
 const std::string currentDateTime() {

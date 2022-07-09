@@ -21,6 +21,7 @@ namespace mdcore{
                     this->logger_name = name;
                 };
                 ~Logger(){};
+                void set_outputstream(FILE*);
                 void info(char* message);
                 void debug(char* message);
                 void warning(char* message);
@@ -28,7 +29,8 @@ namespace mdcore{
                 void fatal(char* message);
                 void setLevel(LoggerLevel level);
             private:
-                char* logger_name;
+                const char* logger_name;
+                FILE* output_stream = stdout;
                 LoggerLevel level = getLoggerLevel();
                 /** *******************************************************************************************************************
                 *
